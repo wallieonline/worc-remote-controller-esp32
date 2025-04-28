@@ -1,5 +1,6 @@
 # worc-remote-controller-esp32
 Firmware for the WORC Remote Controller based on the Espressif ESP32 MCU and ESP-NOW protocol.
+For more information about the project see: (https://www.wallieonline.nl/blogs/esp-now-remote-control-mini-robots.html)
 
 ![WORC Robot Controller](https://img.youtube.com/vi/kkPaScOB8mg/hqdefault.jpg)
 
