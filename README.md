@@ -22,8 +22,8 @@ To bind the robot to your remote you need to change one line of code.
 - Select the correct Board, Settings and port for your ESP32 board and click upload.
 
 # Wiring the ESP32 remote-controller for Analog joystick usage.
-ESP32   GPIO    Analog joystick
-3.3V    -       5V
-GND     -       GND
-S-VP    36      VRY
-S-VN    39      VRX
+| ESP32        | Analog joystick |
+| 3.3V         | 5V              |
+| GND          | GND             |
+| S-VP gpio-36 | VRY             |
+| S-VN gpio-39 | VRX             |
