@@ -6,6 +6,13 @@
 #include <WiFi.h>
 //#include <Ps3Controller.h>
 
+//Assign PS3-MAC address
+//uint8_t gClonedMac[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06};
+
+//Assign ESP32-MAC address
+//CHANGE THIS MAC ADDRESS!! Use readmac.ino on the ESP32-C3 Robot Controller to retrieve the MAC address
+uint8_t broadcastAddress1[] = {0x64, 0xE8, 0x33, 0x88, 0x20, 0x91}; //64:E8:33:88:20:91 - ESP32-C3 Robot Controller
+
 //Assign pins
 #define FLED_OUT_PIN 2
 #define CPPM_IN_PIN 12
@@ -52,13 +59,6 @@ rc_data_t gEspn;
 uint8_t gMode = MODE_FAILS;
 
 esp_now_peer_info_t peerInfo;
-
-//Assign PS3-MAC address
-uint8_t gClonedMac[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06};
-
-//Assign RX-MAC address
-uint8_t broadcastAddress1[] = {0x64, 0xE8, 0x33, 0x88, 0x20, 0x90}; //64:E8:33:88:20:90 - ESP32-C3 Robot Controller
-uint8_t broadcastAddress2[] = {0x3C, 0x71, 0xBF, 0x26, 0x5B, 0xFD}; //3C:71:BF:26:5B:FD - ESP8266 Monitoring Module
 
 float myProcessInput(int input, int inputmin, int inputmax, int expo)
 {
@@ -146,16 +146,6 @@ void setup()
   esp_now_register_send_cb(OnDataSent);
   //Register first peer
   memcpy(peerInfo.peer_addr, broadcastAddress1, 6);
-  peerInfo.channel = 0;
-  peerInfo.ifidx = WIFI_IF_STA;
-  peerInfo.encrypt = false;
-  Serial.println("Add peer...");
-  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
-    Serial.println("Failed to add peer");
-    return;
-  }
-  //register second peer
-  memcpy(peerInfo.peer_addr, broadcastAddress2, 6);
   peerInfo.channel = 0;
   peerInfo.ifidx = WIFI_IF_STA;
   peerInfo.encrypt = false;
