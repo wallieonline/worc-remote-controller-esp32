@@ -1,6 +1,6 @@
 # worc-remote-controller-esp32
 Firmware for the WORC Remote Controller based on the Espressif ESP32 MCU and ESP-NOW protocol.
-For more information about the project see:
+For more information about the project see:<br/>
 (https://www.wallieonline.nl/blogs/esp-now-remote-control-mini-robots.html)
 
 ![WORC Robot Controller](https://img.youtube.com/vi/kkPaScOB8mg/hqdefault.jpg)
@@ -23,6 +23,7 @@ To bind the robot to your remote you need to change one line of code.
 
 # Wiring the ESP32 remote-controller for Analog joystick usage.
 | ESP32        | Analog joystick |
+| ------------ | --------------- |
 | 3.3V         | 5V              |
 | GND          | GND             |
 | S-VP gpio-36 | VRY             |
