@@ -57,6 +57,16 @@ uint8_t gMode = MODE_FAILS;
 
 esp_now_peer_info_t peerInfo;
 
+int myReadAnalogAvg(int pin, uint8_t samples = 5)
+{
+  long total = 0;
+  for (uint8_t i = 0; i < samples; i++) {
+    total += analogRead(pin);
+  }
+  int average = total / samples;
+  return average;
+}
+
 float myProcessInput(int input, int inputmin, int inputmax, int expo)
 {
   float inputexpo = map(input, inputmin, inputmax, -1000, 1000);
@@ -192,8 +202,8 @@ void loop()
   
   if (gMode == MODE_STICK && current_millis >= last_stick_millis + 20) {
     last_stick_millis = current_millis;
-    gStick[AIL] = myProcessInput(analogRead(VRX_IN_PIN), 0, 4095, 50);
-    gStick[ELE] = myProcessInput(analogRead(VRY_IN_PIN), 0, 4095, 1);
+    gStick[AIL] = myProcessInput(myReadAnalogAvg(VRX_IN_PIN), 0, 4095, 50);
+    gStick[ELE] = myProcessInput(myReadAnalogAvg(VRY_IN_PIN), 0, 4095, 1);
     //gStick[AIL] = map(analogRead(VRX_IN_PIN), 0, 4095, 2000, 1000);
     //gStick[ELE] = map(analogRead(VRY_IN_PIN), 0, 4095, 2000, 1000);
     if (gStick[AIL]) gEspn.gAIL = gStick[AIL];
