@@ -1,5 +1,5 @@
 /*
- * WORC Robot Controller - ESP32-C3 ESP-NOW Remote Controller
+ * WORC Robot Controller - ESP32 ESP-NOW Remote Controller
  * Copyright (C) 2026 wallieonline
  *
  * This program is free software: you can redistribute it and/or modify
