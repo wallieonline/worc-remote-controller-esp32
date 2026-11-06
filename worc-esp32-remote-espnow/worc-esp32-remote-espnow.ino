@@ -129,7 +129,11 @@ void myInitCPPM2()
 }
 
 // callback when data is sent
+#if ESP_ARDUINO_VERSION_MAJOR >= 3
+void OnDataSent(const wifi_tx_info_t *tx_info, esp_now_send_status_t status) {
+#else
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+#endif
   //Serial.print("\r\nLast Packet Send Status:\t");
   //Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
 }
@@ -156,7 +160,7 @@ void setup()
   esp_wifi_set_storage(WIFI_STORAGE_RAM);
   esp_wifi_set_ps(WIFI_PS_NONE);
   esp_wifi_start();
-  WiFi.setTxPower(WIFI_POWER_17dBm); //Medium power (~50mW)
+  esp_wifi_set_max_tx_power(68); //17 dBm (68 x 0.25 dBm) Medium power (~50mW)
   esp_wifi_set_channel(1, WIFI_SECOND_CHAN_NONE);   // lock the channel (1, 6, or 11 are the non-overlapping ones)
   //Init ESP-NOW
   if (esp_now_init() != ESP_OK) {
