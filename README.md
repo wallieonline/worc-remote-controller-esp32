@@ -35,6 +35,20 @@ If neither input is detected, the remote keeps the link alive by broadcasting fa
 | S-VP GPIO 36 | VRY             |
 | S-VN GPIO 39 | VRX             |
 
+## Flashing with the webflasher (no installation)
+
+The easiest way to install the firmware, no Arduino IDE needed:
+
+1. Open the webflasher in **Chrome or Edge** (WebSerial is required): https://wallieonline.nl/flasher.html
+2. Choose **Remote** and the firmware variant for your control method.
+3. Connect your ESP32 board via USB (a data cable, some cables are charge only!).
+4. Click the **Flash** button under your chosen firmware.
+5. In the popup from your browser, select the USB port and click **Connect**, then click **Install**. Keep the cable connected and this page open until it reaches 100% — done!
+
+More firmware versions will be added to the webflasher soon.
+
+*Tip: if flashing does not start, your board may need to be put in bootloader mode manually. Keep the Flash/BOOT button pressed when powering up the board and try again.*
+
 ## Programming the ESP32 with the Arduino IDE
 
 - Install the Arduino IDE software from the Arduino website.
